@@ -14,6 +14,7 @@ RUN apt-get update \
          apt-get install -y \
            build-essential \
            coreutils \
+	   git \
            libxml2-dev \
            libxslt-dev \
            locales \
