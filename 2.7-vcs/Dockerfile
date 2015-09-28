@@ -73,11 +73,14 @@ CMD /etc/init.d/redis-server start \
            cd $INSTALL_DIR \
            && . bin/activate \
 	   && cd $INSTALL_DIR/src/pootle \
-	   && git pull \
+	   && git fetch origin \
+	   && git checkout origin/vcs_updates \
 	   && cd $INSTALL_DIR/src/pootle-vcs \
-	   && git pull \
+	   && git fetch origin \
+	   && git checkout origin/master \
 	   && cd $INSTALL_DIR/src/pootle-vcs-git \
-	   && git pull \
+	   && git fetch origin \
+	   && git checkout origin/master \
 	   && cd $INSTALL_DIR \
            && (pootle rqworker &) \")"
 
