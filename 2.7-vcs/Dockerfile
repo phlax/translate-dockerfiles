@@ -66,7 +66,7 @@ RUN apt-get update \
 
 RUN sudo -u pootle \
          bash -c "\
-	   echo 'INSTALLED_APPS = INSTALLED_APPS + [\'pootle_vcs\', \'pootle_vcs_git\']' \
+	   echo 'INSTALLED_APPS = INSTALLED_APPS + [\"pootle_vcs\", \"pootle_vcs_git\"]' \
 	        >> ~/.pootle/pootle.conf"
 
 
