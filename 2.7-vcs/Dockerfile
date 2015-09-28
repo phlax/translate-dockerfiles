@@ -51,6 +51,7 @@ RUN apt-get update \
 		-e git://github.com/phlax/pootle_vcs_git#egg=pootle_vcs_git \
            && pootle init \
 	   && echo 'INSTALLED_APPS = INSTALLED_APPS + [\"pootle_vcs\", \"pootle_vcs_git\"]' \
+                >> ~/.pootle/pootle.conf \
            && pootle migrate \
            && pootle initdb \
            && echo \"from django.contrib.auth import get_user_model; \
