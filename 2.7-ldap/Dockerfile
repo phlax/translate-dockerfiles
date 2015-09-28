@@ -44,8 +44,9 @@ RUN apt-get update \
            && cd $INSTALL_DIR \
            && virtualenv . \
            && . bin/activate \
-           && pip install $POOTLE_PKG \
-	   && pip install django-auth-ldap \
+           && pip install \
+	        $POOTLE_PKG \
+	        django-auth-ldap \
            && pootle init \
            && pootle migrate \
            && pootle initdb \
