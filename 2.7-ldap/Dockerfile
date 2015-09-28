@@ -65,6 +65,23 @@ RUN apt-get update \
            && sleep 300" \
     && /etc/init.d/redis-server stop
 
+RUN sudo -u pootle \
+         bash -c "\
+           cd $INSTALL_DIR \
+	   && echo 'import ldap'
+                >> ~/.pootle/pootle.conf \
+	   && echo 'from django_auth_ldap.config import LDAPSearch'
+                >> ~/.pootle/pootle.conf \
+           && echo 'AUTHENTICATION_BACKENDS = AUTHENTICATION_BACKENDS + [\"django_auth_ldap.backend.LDAPBackend\"]' \
+                >> ~/.pootle/pootle.conf \
+           && echo 'AUTH_LDAP_SERVER_URI = \"ldap://127.0.0.1:389\"' \
+                >> ~/.pootle/pootle.conf \
+	   && echo 'AUTH_LDAP_USER_SEARCH = LDAPSearch(\"ou=People,o=Pootle\", \
+                                                       ldap.SCOPE_SUBTREE, \"(uid=%(user)s)\")' \
+                >> ~/.pootle/pootle.conf \
+	   && echo 'AUTH_LDAP_USER_ATTR_MAP = dict(first_name=\"givenName\", last_name=\"sn\")' \
+                >> ~/.pootle/pootle.conf"
+
 CMD /etc/init.d/redis-server start \
     && sudo -u pootle \
          bash -c "\
