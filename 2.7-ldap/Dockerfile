@@ -1,4 +1,4 @@
-# translate/pootle:2.7.2
+# translate/pootle:2.7-ldap
 #
 # VERSION       0.0.1
 
