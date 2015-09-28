@@ -83,6 +83,7 @@ RUN sudo -u pootle \
                 >> ~/.pootle/pootle.conf"
 
 CMD /etc/init.d/redis-server start \
+    && /etc/init.d/slapd start \
     && sudo -u pootle \
          /bin/bash -c "bash --rcfile <(echo \"\
            cd $INSTALL_DIR \
