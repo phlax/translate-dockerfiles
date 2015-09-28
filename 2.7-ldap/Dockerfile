@@ -15,6 +15,8 @@ RUN apt-get update \
            build-essential \
            coreutils \
 	   libldap2-dev \
+	   libsasl2-dev \
+	   libssl-dev \
            libxml2-dev \
            libxslt-dev \
            locales \
