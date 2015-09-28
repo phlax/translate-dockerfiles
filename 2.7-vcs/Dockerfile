@@ -72,6 +72,13 @@ CMD /etc/init.d/redis-server start \
          /bin/bash -c "bash --rcfile <(echo \"\
            cd $INSTALL_DIR \
            && . bin/activate \
+	   && cd $INSTALL_DIR/src/pootle \
+	   && git pull \
+	   && cd $INSTALL_DIR/src/pootle-vcs \
+	   && git pull \
+	   && cd $INSTALL_DIR/src/pootle-vcs-git \
+	   && git pull \
+	   && cd $INSTALL_DIR \
            && (pootle rqworker &) \")"
 
 EXPOSE 8000
