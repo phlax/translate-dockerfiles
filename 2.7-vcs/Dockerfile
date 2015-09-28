@@ -68,10 +68,9 @@ RUN apt-get update \
 
 CMD /etc/init.d/redis-server start \
     && sudo -u pootle \
-         bash -c "\
+         /bin/bash -c "bash --rcfile <(echo \"\
            cd $INSTALL_DIR \
            && . bin/activate \
-           && (pootle rqworker &) \
-           && pootle runserver --insecure 0.0.0.0:8000"
+           && (pootle rqworker &) \")"
 
 EXPOSE 8000
