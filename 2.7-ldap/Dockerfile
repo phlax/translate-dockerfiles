@@ -14,6 +14,7 @@ RUN apt-get update \
          apt-get install -y \
            build-essential \
            coreutils \
+	   libldap2-dev \
            libxml2-dev \
            libxslt-dev \
            locales \
