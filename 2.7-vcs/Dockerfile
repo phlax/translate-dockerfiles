@@ -64,6 +64,12 @@ RUN apt-get update \
            && sleep 300" \
     && /etc/init.d/redis-server stop
 
+RUN sudo -u pootle \
+         bash -c "\
+	   && echo 'INSTALLED_APPS = INSTALLED_APPS + [\"pootle_vcs\", \"pootle_vcs_git\"]' \
+	        >> ~/.pootle/pootle.conf"
+
+
 CMD /etc/init.d/redis-server start \
     && sudo -u pootle \
          bash -c "\
