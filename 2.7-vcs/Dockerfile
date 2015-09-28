@@ -50,6 +50,7 @@ RUN apt-get update \
 		-e git://github.com/phlax/pootle_vcs#egg=pootle_vcs \
 		-e git://github.com/phlax/pootle_vcs_git#egg=pootle_vcs_git \
            && pootle init \
+	   && echo 'INSTALLED_APPS = INSTALLED_APPS + [\"pootle_vcs\", \"pootle_vcs_git\"]' \
            && pootle migrate \
            && pootle initdb \
            && echo \"from django.contrib.auth import get_user_model; \
@@ -63,11 +64,6 @@ RUN apt-get update \
                 >> ~/.pootle/pootle.conf \
            && sleep 300" \
     && /etc/init.d/redis-server stop
-
-RUN sudo -u pootle \
-         bash -c "\
-	   echo 'INSTALLED_APPS = INSTALLED_APPS + [\"pootle_vcs\", \"pootle_vcs_git\"]' \
-	        >> ~/.pootle/pootle.conf"
 
 
 CMD /etc/init.d/redis-server start \
