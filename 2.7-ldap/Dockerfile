@@ -68,9 +68,9 @@ RUN apt-get update \
 RUN sudo -u pootle \
          bash -c "\
            cd $INSTALL_DIR \
-	   && echo 'import ldap'
+	   && echo 'import ldap' \
                 >> ~/.pootle/pootle.conf \
-	   && echo 'from django_auth_ldap.config import LDAPSearch'
+	   && echo 'from django_auth_ldap.config import LDAPSearch' \
                 >> ~/.pootle/pootle.conf \
            && echo 'AUTHENTICATION_BACKENDS = AUTHENTICATION_BACKENDS + [\"django_auth_ldap.backend.LDAPBackend\"]' \
                 >> ~/.pootle/pootle.conf \
